@@ -1,8 +1,8 @@
 {
-    "name": "administrator/81039c9a-b292-424f-ae7b-ce7b6031ea81",
+    "name": "wilson/reporting_system_demo",
     "autoload": {
         "psr-4": {
-            "Administrator\\81039c9aB292424fAe7bCe7b6031ea81\\": "src/"
+            "Wilson\\ReportingSystemDemo\\": "src/"
         }
     },
     "authors": [
@@ -11,15 +11,20 @@
             "email": "wilsonhuang.au@gmail.com"
         }
     ],
+
     "require-dev": {
         "symplify/easy-coding-standard": "^11.3",
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^9.6"
     },
+    "bin": ["bin/demo"],
     "scripts": {
         "check-cs": "vendor/bin/ecs check --ansi",
         "fix-cs": "vendor/bin/ecs check --fix --ansi",
         "phpstan": "vendor/bin/phpstan --ansi",
         "test": "vendor/bin/phpunit --verbose tests"
+    },
+    "require": {
+        "twig/twig": "^3.6"
     }
 }
