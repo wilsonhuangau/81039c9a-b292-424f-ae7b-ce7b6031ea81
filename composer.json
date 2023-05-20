@@ -25,6 +25,7 @@
         "test": "vendor/bin/phpunit --verbose tests"
     },
     "require": {
-        "twig/twig": "^3.6"
+        "twig/twig": "^3.6",
+        "jajo/jsondb": "^3.0"
     }
 }

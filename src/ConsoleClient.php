@@ -8,9 +8,10 @@ class ConsoleClient
 {
     private static $_instance;
 
-    private function __construct(){
-
-    }
+    private function __construct()
+    {}
+    private function __clone()
+    {}
 
     public static function getConsoleClient():ConsoleClient
     {
