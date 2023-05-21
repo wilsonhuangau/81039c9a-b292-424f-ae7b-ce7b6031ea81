@@ -8,6 +8,7 @@ use Wilson\ReportingSystemDemo\DummyDB;
 abstract class Model
 {
     protected JSONDB $db;
+
     protected string $table;
 
     public function __construct()
@@ -15,18 +16,20 @@ abstract class Model
         $this->db = DummyDB::getDB();
     }
 
-
-    public function getById(String $id) {
+    public function getById(String $id)
+    {
         return $this->db->select('*')
             ->from($this->table)
-            ->where(['id' => $id])
+            ->where([
+                'id' => $id,
+            ])
             ->get();
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         return $this->db->select('*')
             ->from($this->table)
             ->get();
     }
-
 }
