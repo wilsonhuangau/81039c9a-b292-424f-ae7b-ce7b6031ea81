@@ -17,7 +17,7 @@
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^9.6"
     },
-    "bin": ["bin/demo"],
+    "bin": ["bin/app"],
     "scripts": {
         "check-cs": "vendor/bin/ecs check --ansi",
         "fix-cs": "vendor/bin/ecs check --fix --ansi",

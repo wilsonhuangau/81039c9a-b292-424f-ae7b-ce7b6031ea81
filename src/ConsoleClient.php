@@ -37,19 +37,25 @@ class ConsoleClient
     {
         echo 'Please enter the following' . PHP_EOL;
         echo 'Student ID:';
-        $handle = fopen("php://stdin", "r");
-        $line = fgets($handle);
-        fclose($handle);
-        return trim($line);
+        return $this->getInput();
     }
 
     protected function getReportType(): string
     {
         $reportType = ReportBuilder::Report_Type;
         echo 'Report to generate (1 for Diagnostic, 2 for Progress, 3 for Feedback):';
+        return $this->getInput();
+    }
+
+    protected function getInput(): string
+    {
         $handle = fopen("php://stdin", "r");
-        $line = fgets($handle);
+        $line = filter_var(trim(fgets($handle)), FILTER_UNSAFE_RAW);
         fclose($handle);
-        return $line;
+        if (! empty($line)) {
+            return $line;
+        }
+        echo "Please enter a valid value";
+        return $this->getInput();
     }
 }
