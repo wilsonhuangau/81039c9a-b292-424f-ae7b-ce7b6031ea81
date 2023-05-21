@@ -1,0 +1,12 @@
+{{student.firstName}} {{student.lastName}} has completed {{assessment.name}} assessment {{responses|length }} times in total. Date and raw score given below:
+
+{% for response in responses %}
+Date: {{response.completed}}, Raw Score: {{response.results.rawScore}} out of {{response.responses|length }}
+{% endfor %}
+
+{% if progress > 0 %}
+{{student.firstName}} {{student.lastName}} got {{progress}} more correct in the recent completed assessment than the oldest
+{% endif %}
+{% if progress < 0 %}
+{{student.firstName}} {{student.lastName}} got {{ - progress}} less correct in the recent completed assessment than the oldest
+{% endif %}

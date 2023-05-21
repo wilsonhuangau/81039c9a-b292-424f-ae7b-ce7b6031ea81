@@ -1,0 +1,6 @@
+{{student.firstName}} {{student.lastName}} recently completed {{assessment.name}} assessment on {{response.completed}}
+He got {{response.results.rawScore}} questions right out of {{response.responses|length }}. Details by strand given below:
+
+{% for name, result in strandDetails %}
+{{name}}: {{result.correct}} out of {{result.total}} correct
+{% endfor %}
