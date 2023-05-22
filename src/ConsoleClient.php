@@ -44,7 +44,12 @@ class ConsoleClient
     {
         $reportType = ReportBuilder::Report_Type;
         echo 'Report to generate (1 for Diagnostic, 2 for Progress, 3 for Feedback):';
-        return $this->getInput();
+        $reportTypeId = $this->getInput();
+        if (! array_key_exists($reportTypeId, $reportType)) {
+            echo 'Please enter a valid options' . PHP_EOL;
+            return $this->getReportType();
+        }
+        return $reportTypeId;
     }
 
     protected function getInput(): string
@@ -55,7 +60,7 @@ class ConsoleClient
         if (! empty($line)) {
             return $line;
         }
-        echo "Please enter a valid value";
+        echo "Please enter a valid value" . PHP_EOL;
         return $this->getInput();
     }
 }

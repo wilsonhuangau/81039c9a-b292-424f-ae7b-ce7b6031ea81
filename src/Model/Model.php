@@ -11,9 +11,13 @@ abstract class Model
 
     protected string $table;
 
-    public function __construct()
+    public function __construct(JSONDB $db = null)
     {
-        $this->db = DummyDB::getDB();
+        if ($db) {
+            $this->db = $db;
+        } else {
+            $this->db = DummyDB::getDB();
+        }
     }
 
     public function getById(String $id)

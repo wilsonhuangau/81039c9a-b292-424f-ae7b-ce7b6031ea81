@@ -1,9 +1,14 @@
+{% if error %}
+{{error}}
+{% endif %}
+{% if not error %}
 {{student.firstName}} {{student.lastName}} recently completed {{assessment.name}} assessment on {{response.completed}}
 He got {{response.results.rawScore}} questions right out of {{response.responses|length }}. Feedback for wrong answers given below
-
 {% for feedback in feedbackDetails %}
+
 Question: {{feedback.stem|raw }}
 Your answer: {{feedback.responseAnswer.label}} with value {{feedback.responseAnswer.value}}
 Right answer: {{feedback.rightAnswer.label}} with value {{feedback.rightAnswer.value}}
 Hint: {{feedback.hint|raw}}
 {% endfor %}
+{% endif %}

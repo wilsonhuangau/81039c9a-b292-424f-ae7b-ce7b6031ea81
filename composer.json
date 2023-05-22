@@ -3,7 +3,10 @@
     "autoload": {
         "psr-4": {
             "Wilson\\ReportingSystemDemo\\": "src/"
-        }
+        },
+        "files": [
+            "src/Helper/until.php"
+        ]
     },
     "authors": [
         {
@@ -22,7 +25,7 @@
         "check-cs": "vendor/bin/ecs check --ansi",
         "fix-cs": "vendor/bin/ecs check --fix --ansi",
         "phpstan": "vendor/bin/phpstan --ansi",
-        "test": "vendor/bin/phpunit --verbose tests"
+        "test": "vendor/bin/phpunit --colors --testdox --verbose tests"
     },
     "require": {
         "twig/twig": "^3.6",

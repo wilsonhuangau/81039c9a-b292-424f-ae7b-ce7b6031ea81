@@ -25,7 +25,7 @@ class ProgressReportContent extends ReportContent
             ];
         }
         foreach ($responses as $key => $response) {
-            $responses[$key]['completed'] = $this->convertTime($response['completed']);
+            $responses[$key]['completed'] = convertTime($response['completed']);
         }
 
         $progress = $this->getProgress($responses);

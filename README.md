@@ -6,6 +6,8 @@ This is a simple assessment reporting system demo for ACER coding challenge.
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Testing](#testing)
+- [File Structure](#file-structure)
 
 # Installation
 
@@ -54,11 +56,77 @@ You can run the app by running the following command in the root of the project 
 ```
 php bin/app
 ```
-Run test cases by
+## Testing
+
+Run phpunit test by
 ```
 composer test
 ```
 Run code standard check by
 ```
 composer check-cs
+```
+Tested on [GitHub Actions](https://github.com/wilsonhuangau/81039c9a-b292-424f-ae7b-ce7b6031ea81/actions)
+
+- [x] PHP 8.0
+- [x] PHP 8.1
+- [x] PHP 8.2
+
+[![Code Analysis](https://github.com/wilsonhuangau/81039c9a-b292-424f-ae7b-ce7b6031ea81/actions/workflows/code_analysis.yaml/badge.svg?branch=main)](https://github.com/wilsonhuangau/81039c9a-b292-424f-ae7b-ce7b6031ea81/actions/workflows/code_analysis.yaml)
+[![Unit Tests](https://github.com/wilsonhuangau/81039c9a-b292-424f-ae7b-ce7b6031ea81/actions/workflows/tests.yaml/badge.svg)](https://github.com/wilsonhuangau/81039c9a-b292-424f-ae7b-ce7b6031ea81/actions/workflows/tests.yaml)
+
+## File Structure
+
+```
+├── bin
+|  ├── app
+|  └── app.php 
+├── composer.json
+├── composer.lock
+├── ecs.php
+├── phpstan.neon
+├── README.md
+├── src
+|  ├── ConsoleClient.php
+|  ├── data                                    (Sample data)
+|  |  ├── assessments.json
+|  |  ├── questions.json
+|  |  ├── student-responses.json
+|  |  └── students.json
+|  ├── DummyDB.php                             (Load json data as a sql like DB)
+|  ├── Helper                                  (Helper function)
+|  |  └── until.php
+|  ├── Model                                   (Data access object)
+|  |  ├── Assessments.php
+|  |  ├── Model.php
+|  |  ├── Questions.php
+|  |  ├── StudentResponses.php
+|  |  └── Students.php
+|  └── Report                                  (Report builder)
+|     ├── Content                              
+|     |  ├── DiagnosticReportContent.php
+|     |  ├── FeedbackReportContent.php
+|     |  ├── ProgressReportContent.php
+|     |  ├── ReportContent.php
+|     |  └── Templates                         (Report templates)
+|     |     ├── diagnosticReportTemplate.txt
+|     |     ├── feedbackReportTemplate.txt
+|     |     └── progressReportTemplate.txt
+|     ├── Printer                              (Printer classes, currently only have one printer) 
+|     |  ├── ConsolePinter.php
+|     |  └── Printer.php
+|     └── ReportBuilder.php
+└── tests                                      (test cases)
+|  ├── data                                    (test data)
+|  |  ├── assessments.json
+|  |  ├── questions.json
+|  |  ├── student-responses.json
+|  |  └── students.json
+|  ├── Helper
+|  |  └── untilTest.php
+|  ├── Model
+|  |  ├── QuestionsTest.php
+|  |  └── StudentResponsesTest.php
+|  └── Report
+|     └── ReportContentTest.php
 ```

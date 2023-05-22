@@ -61,8 +61,8 @@ class ReportBuilder
         return $reportContent->getReportContent($studentId);
     }
 
-    private function printReport(Printer $printer, String $content)
+    private function printReport(Printer $printer, String $content): void
     {
-        return $printer->print($content);
+        $printer->print($content);
     }
 }

@@ -25,7 +25,7 @@ class DiagnosticReportContent extends ReportContent
                 'error' => 'Responses not found',
             ];
         }
-        $studentLatestResponse['completed'] = $this->convertTime($studentLatestResponse['completed']);
+        $studentLatestResponse['completed'] = convertTime($studentLatestResponse['completed']);
         $assessment = (new Assessments())->getById($studentLatestResponse['assessmentId']);
         $questions = (new Questions())->getQuestionsByIds(array_column($studentLatestResponse['responses'], 'questionId'));
 
@@ -44,7 +44,7 @@ class DiagnosticReportContent extends ReportContent
         $result = [];
 
         foreach ($responses as $response) {
-            $question = $this->getItemByKeyValue($questions, 'id', $response['questionId']);
+            $question = getItemByKeyValue($questions, 'id', $response['questionId']);
             if (! array_key_exists($question['strand'], $result)) {
                 $result[$question['strand']] = [];
             }

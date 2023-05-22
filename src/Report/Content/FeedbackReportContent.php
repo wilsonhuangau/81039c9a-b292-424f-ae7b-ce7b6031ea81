@@ -25,7 +25,7 @@ class FeedbackReportContent extends ReportContent
                 'error' => 'Responses not found',
             ];
         }
-        $studentLatestResponse['completed'] = $this->convertTime($studentLatestResponse['completed']);
+        $studentLatestResponse['completed'] = convertTime($studentLatestResponse['completed']);
         $assessment = (new Assessments())->getById($studentLatestResponse['assessmentId']);
         $questions = (new Questions())->getQuestionsByIds(array_column($studentLatestResponse['responses'], 'questionId'));
         $feedbackDetails = $this->getFeedbackDetails($questions, $studentLatestResponse['responses']);
@@ -43,11 +43,11 @@ class FeedbackReportContent extends ReportContent
         $result = [];
 
         foreach ($responses as $response) {
-            $question = $this->getItemByKeyValue($questions, 'id', $response['questionId']);
+            $question = getItemByKeyValue($questions, 'id', $response['questionId']);
             if ($response['response'] !== $question['config']['key']) {
                 $result[$question['id']]['stem'] = $question['stem'];
-                $result[$question['id']]['responseAnswer'] = $this->getItemByKeyValue($question['config']['options'], 'id', $response['response']);
-                $result[$question['id']]['rightAnswer'] = $this->getItemByKeyValue($question['config']['options'], 'id', $question['config']['key']);
+                $result[$question['id']]['responseAnswer'] = getItemByKeyValue($question['config']['options'], 'id', $response['response']);
+                $result[$question['id']]['rightAnswer'] = getItemByKeyValue($question['config']['options'], 'id', $question['config']['key']);
                 $result[$question['id']]['hint'] = $question['config']['hint'];
             }
         }

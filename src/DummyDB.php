@@ -21,7 +21,7 @@ class DummyDB
     public static function getDB(): JSONDB
     {
         if (! (self::$_instance instanceof self)) {
-            self::$db = new JSONDB(__DIR__ . '\data');
+            self::$db = new JSONDB(__DIR__ . '/data');
             self::$_instance = new self();
         }
         return self::$db;
